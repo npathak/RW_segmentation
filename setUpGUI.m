@@ -167,6 +167,13 @@ toggleButtonWidth = 100;
 toggleButtonHeight = 40;
 numTB = 5;
 
+if (r<256)
+    r = r*1.5;
+end
+
+if (c<256)
+    c = c*1.5;
+end
 
 Dim.fh    = [SCR(3)/2-200 ,SCR(4)/2-200, c*3+300, r*1.5+250];
 Dim.ax{1} = [175 110 c*1.5 r*1.5];
