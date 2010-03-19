@@ -27,8 +27,15 @@ function [] = RW_tool(image3D)
 % Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307,
 % USA.
 
-addpath ('vendor/graphAnalysisToolbox-1.0/')
-addpath ('vendor/NIFTI_Shen/')
+% Add paths to the requited packages
+tf = ispc;
+if (tf==0)
+    addpath ('vendor/graphAnalysisToolbox-1.0/')
+    addpath ('vendor/NIFTI_Shen/')
+else
+    addpath ('vendor\graphAnalysisToolbox-1.0\')
+    addpath ('vendor\NIFTI_Shen\')
+end
 
 % Initialize or load previous results
 R      = get3DimageHandle(image3D);
