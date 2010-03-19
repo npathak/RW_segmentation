@@ -1,0 +1,91 @@
+Random Walker based Segmentation
+
+This code provides a graphical user interface (GUI) to segment 3D images 
+based on the Random Walker algorithm (Grady 2006).  
+
+== Introduction
+
+The current primary aim is to segment White Matter Hyperintensities (WMHI) 
+from Fluid-attenuated inversion recovery (FLAIR) images, where WMHI show up 
+as bright spots in WM or around the ventricles.  This is a semi-supervised 
+method, where an user places foreground and background seeds interactively 
+in the image to provide the algorithm with some boundary conditions.  Based 
+on these boundary conditions, the RW algorithm simulates a random walk 
+process from each voxel under analysis to assign it with the highest 
+probability of being a part of either the foreground or background 
+(ie being a WMHI or not).  
+
+The outcome is a probability map of the region under analysis, which can 
+easily be thresholded to produce a binary mask of WMHI.
+
+
+== Example:
+
+Load an image:
+If you have a nifti image called Flair.nii in the code directory, and you 
+have Tools for NIfTI by Jimmy Shen in your path, you can use load_nii.m from
+those tools.
+>> image3D = load_nii("Flair.nii", 1, [], [], [], [], [], "Q");
+
+Open the RW Toolbox:
+>> RW_tool(image3D)
+
+Select a slice to seed by clicking the "Select Slice" button.
+
+Choose a single WMHI to seed.  Left click on it in several locations to place 
+foreground seeds inside the lesion.  On the last foreground seed, right 
+click; this will switch to placing background seeds with the Left button.
+Left click on several voxels near but outside the WMHI to add background 
+seeds.  When all your background seeds are in place, right click again to
+start the algorithm.  Depending on the size of the lesion you've chosen 
+to segment, it should process for a few minutes.  Then the main GUI window
+will return and display the results of the segmentation on the right window.
+
+There are some current limitations to the GUI.  Once you place a seed, you 
+cannot delete it or move it, but you can remove the last seed you placed
+by middle-clicking.  You must first place all your foreground seeds, then
+background seeds, and cannot switch between the two.
+
+Repeat until all WMHIs have been segmented, then save and analyze using
+your favorite stats package.
+
+This is a work in progress and we welcome your input and feedback.  This is 
+free software released under Fork away!
+
+
+== Depedencies:
+
+Parts of several toolboxes are used, which are included in the vendor 
+directory.  
+
+The segmentation requires the graphAnalysisToolbox-1.0. by Leo Grady
+Download link: 
+http://eslab.bu.edu/software/graphanalysis/graphanalysis.html
+
+Loading Nifti images into MATLAB variables can easily be done using:
+Tools for NIfTI and ANALYZE image by Jimmy Shen
+Download link: 
+http://www.mathworks.com/matlabcentral/fileexchange/8797-tools-for-nifti-and-analyze-image
+
+== License
+
+This program is free software; you can redistribute it and/or 
+modify it under the terms of the GNU General Public License
+as published by the Free Software Foundation; either version 3
+of the License, or (at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU General Public License for more details.
+
+You should have received a copy of the GNU General Public License
+along with this program; if not, write to the Free Software
+Foundation, Inc., 59 Temple Place - Suite 330, Boston, MA  02111-1307, USA.
+
+REFERENCES
+Grady L., " Random Walks For Image Segmentation ", IEEE Transactions On 
+Pattern Analysis And Machine Intelligence, Vol. 28, No. 11, 2006
+
+03/18/2010 - Nayanjyoti Pathak
+pathak2@wisc.edu
