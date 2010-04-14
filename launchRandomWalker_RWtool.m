@@ -55,7 +55,8 @@ RW.fh = figure('name','Place foreground and background seeds here', ...
                'resize','off', ...
                'position',[SCR(3)-SCR(4)/r*c ,1, SCR(4)/r*c, SCR(4)], ...
                'NumberTitle','off');
-imagesc(img);colormap(gray);hold on;
+% Display image with 0.1% of top and bottom outliers removed
+imagesc(imadjust(img, stretchlim(img, [0.001 0.999])));colormap(gray);hold on;
 
 % Loop, picking up the points.
 xy = [];
