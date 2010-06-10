@@ -47,6 +47,7 @@ temp_mask(xy_bfr+1:r+xy_bfr,xy_bfr+1:c+xy_bfr, z_bfr+1:f+z_bfr) ...
                    = R.temp_mask;
                
 % Get the current slice for display
+% img   = image3D(:,:,sliceNum);stretchlim(image3D(:,:,slider_value), [0.00 1]
 img   = image3D(:,:,sliceNum);
 
 % Plot currently selected slice for input of seed points
@@ -56,7 +57,8 @@ RW.fh = figure('name','Place foreground and background seeds here', ...
                'position',[SCR(3)-SCR(4)/r*c ,1, SCR(4)/r*c, SCR(4)], ...
                'NumberTitle','off');
 % Display image with 0.1% of top and bottom outliers removed
-imagesc(imadjust(img, stretchlim(img, [0.001 0.999])));colormap(gray);hold on;
+% imagesc(imadjust(img, stretchlim(img, [0.00 1])));colormap(gray);hold on;
+imagesc(img);colormap(gray);hold on;
 
 % Loop, picking up the points.
 xy = [];

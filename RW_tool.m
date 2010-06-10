@@ -133,7 +133,8 @@ E               = str2double(get(h,'string'));  % Numerical edit string.
 slider_value = int16(get(S.sl,'value'));
 set(S.fh,'CurrentAxes',S.ax(1))
 % Display input image with 0.1% of top and bottom outliers removed
-imagesc(imadjust(image3D(:,:,slider_value), stretchlim(image3D(:,:,slider_value), [0.001 0.999])));colormap(gray);axis off;
+% imagesc(imadjust(image3D(:,:,slider_value), stretchlim(image3D(:,:,slider_value), [0.00 1])));colormap(gray);axis off;
+imagesc(image3D(:,:,slider_value));colormap(gray);axis off;
 
 % Display results as probability map
 set(S.fh,'CurrentAxes',S.ax(2))
