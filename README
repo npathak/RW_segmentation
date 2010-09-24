@@ -1,7 +1,10 @@
 Random Walker based Segmentation
 
-This code provides a graphical user interface (GUI) to segment 3D images 
-based on the Random Walker algorithm (Grady 2006).  
+This code implements a 3D version of random walker based segmentation of Leo 
+Grady's (2006) 2D implementation (http://cns.bu.edu/~lgrady/software.html) 
+and provides a graphical user interface (GUI) to segment 3D images. Several 
+of the files included here are 3D modifications of the original 2D MATLAB
+functions provided by Grady.
 
 == Introduction
 
@@ -55,8 +58,8 @@ free software released under GNU licese. So, Fork away!
 
 == Depedencies:
 
-Parts of several toolboxes are used, which are included in the vendor 
-directory.  
+Parts of several toolboxes are used, which can be downloaded from the links
+below:  
 
 The segmentation requires the graphAnalysisToolbox-1.0. by Leo Grady
 Download link: 
